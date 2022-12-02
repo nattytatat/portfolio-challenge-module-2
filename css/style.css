@@ -4,6 +4,7 @@
 
 :root {
   --border-radius-small:10px;
+  --top-padding:4em;
   --y-padding:4em;
   --light-blue:#F3F6FA;
   --dark-blue:#152C4F;
@@ -43,15 +44,16 @@ h2 {
 p {
   margin: 0 auto;
   max-width: 900px;
-  padding: 1em 0;
+  padding: 1em;
 }
 
 a {
   color: var(--dark-blue);
   font-weight: bold;
+  text-decoration: none;
 }
 
-button {
+.button {
   cursor: pointer;
   background-color: var(--yellow);
   padding: 15px 30px;
@@ -63,7 +65,7 @@ button {
   margin-left: 10px;
 }
 
-button:hover {
+.button:hover {
   background-color: var(--dark-blue);
   color: var(--yellow);
 }
@@ -110,7 +112,7 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10em 0;
+  padding: 10em 1em;
 }
 
 .hero-image {
@@ -145,7 +147,7 @@ nav ul li a {
 }
 
 .content-wrapper {
-  padding: var(--y-padding) 0;
+  padding-top: var(--top-padding);
 }
 
 /* About Us section */
@@ -190,7 +192,27 @@ nav ul li a {
   object-fit: cover;
   width: 100%;
   border-radius: var(--border-radius-small);
+  overflow: hidden;
 }
+
+.project-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: rgba(24,44,79,0.5);
+  transition: 500ms;
+}
+
+.project-heading h4 {
+  font-size: 20px;
+  color: var(--white);
+}
+
+.project-heading:hover {
+  background-color: transparent;
+}
+
 
 #main-project {
   grid-area: largeProject;
@@ -212,10 +234,29 @@ nav ul li a {
   background-image: url('https://picsum.photos/id/349/1000/1000');
 }
 
+/* Contact */
+
+#contact a {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  font-weight: normal;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  font-weight: bold;
+  padding: 2em 0;
+}
+
+
+
 /* Media Queries */
 
 @media only screen and (max-width:960px) {
-  #work {
+  #work-container {
     grid-template-rows: 50vh 50vh 50vh 50vh;
     grid-template-columns:1fr;
     grid-template-areas: 
@@ -224,4 +265,11 @@ nav ul li a {
     "smallProject2"
     "smallProject3";
   }
+}
+
+@media only screen and (max-width:600px) {
+  nav ul{
+    display: none;
+  }
+  
 }
