@@ -2,12 +2,24 @@
   box-sizing: border-box;
 }
 
+:root {
+  --border-radius-small:10px;
+  --y-padding:4em;
+  --light-blue:#F3F6FA;
+  --dark-blue:#152C4F;
+  --white:#ffffff;
+  --yellow:#FFC914;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   font-size: 16px;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 h1,
@@ -20,25 +32,85 @@ h6 {
   font-family: 'Sumana', sans-serif;
 }
 
-header h1 {
-  font-size: 1em;
+h1 {
+  font-size: 40px;
 }
 
 h2 {
-  font-size: 4em;
+  font-size: 26px;
 }
 
 p {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 1em 0;
+}
+
+a {
+  color: var(--dark-blue);
+  font-weight: bold;
 }
 
 button {
   cursor: pointer;
+  background-color: var(--yellow);
+  padding: 15px 30px;
+  border: 0;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--dark-blue);
+  margin-left: 10px;
 }
 
+button:hover {
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+}
+
+img {
+  border-radius: var(--border-radius-small);
+}
+
+/* Header styles */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  padding: 0 15px;
+  
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+/* Hero Styles */
+
 .hero-banner {
-  min-height: 60vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10em 0;
 }
 
 .hero-image {
@@ -52,8 +124,104 @@ button {
 .hero-content {
   position:relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-content h1 {
+  color: var(--white);
+  font-size: 50px;
+  max-width: 23ch;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .avator-image {
   border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.content-wrapper {
+  padding: var(--y-padding) 0;
+}
+
+/* About Us section */
+
+#about, #contact {
+  background-color: var(--light-blue);
+  border-radius: var(--border-radius-small);
+  padding: var(--y-padding) 0;
+}
+
+#about h3, #work h3, #contact h3 {
+  text-align: center;
+}
+
+/* Portfolio Styles */
+
+#work {
+  padding: var(--y-padding) 0;
+}
+
+#work-container {
+  display: grid;
+  grid-template-rows: 50vh 50vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "largeProject largeProject largeProject"
+  "smallProject1 smallProject2 smallProject3";
+  gap: 2em;
+}
+
+#work a {
+  position: absolute;
+  height: 100%;
+  width:100%;
+}
+
+.portfolio-card {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  width: 100%;
+  border-radius: var(--border-radius-small);
+}
+
+#main-project {
+  grid-area: largeProject;
+  background-image:url('https://picsum.photos/id/98/2000/2000');
+}
+
+#one-project {
+  grid-area: smallProject1;
+  background-image:url('https://picsum.photos/id/17/1000/1000');
+}
+
+#two-project {
+  grid-area: smallProject2;
+  background-image:url('https://picsum.photos/id/500/1000/1000');
+}
+
+#three-project {
+  grid-area: smallProject3;
+  background-image: url('https://picsum.photos/id/349/1000/1000');
+}
+
+/* Media Queries */
+
+@media only screen and (max-width:960px) {
+  #work {
+    grid-template-rows: 50vh 50vh 50vh 50vh;
+    grid-template-columns:1fr;
+    grid-template-areas: 
+    "largeProject"
+    "smallProject1"
+    "smallProject2"
+    "smallProject3";
+  }
 }
